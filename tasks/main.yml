@@ -1,0 +1,30 @@
+---
+### tasks file for redash
+- name: Create redash dir
+  file: state=directory path={{ redash_dir }}
+
+- name: Install redash req
+  yum:
+    name: [docker, docker-compose]
+    state: present
+
+- name: Cachet docker-compose template
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ redash_dir }}/{{ item }}"
+  with_items:
+  - docker-compose.yml
+  - redash.env
+  notify: restart redash
+
+- name:  Cachet create service file
+  template: src='redash.service.j2' dest='/etc/systemd/system/redash.service'
+  notify: restart redash
+
+- meta: flush_handlers
+
+- name: Enable redash
+  service:
+    name: redash
+    state: started
+    enabled: True

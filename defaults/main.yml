@@ -1,0 +1,17 @@
+---
+# defaults file for cachet
+redash_dir: '/opt/redash'
+redash_port: 80
+redash_image: "redash/redash:7.0.0.b18042"
+redash_db_name: "redash"
+redash_db_driver: "postgresql+psycopg2"
+redash_db_host: "127.0.0.1"
+redash_db_port: 5432
+redash_db_user: "redash"
+redash_db_password: "some_password"
+redash_db_supass: null #Super User Pass
+redash_db_type: local # local OR remote
+redash_database_url: "{{ redash_db_driver }}://{{ redash_db_user }}:{{ redash_db_password }}@{{ redash_db_host }}:{{ redash_db_port }}/{{ redash_db_name }}"
+redash_redis_url: "redis://{{ ansible_docker0.ipv4.address }}:6379/0"
+redash_cookie_secret: "some_secret"
+redash_secret_key: "some_secret"

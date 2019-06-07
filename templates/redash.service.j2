@@ -1,0 +1,13 @@
+[Unit]
+Description=redash service
+Requires=docker.service
+After=docker.service
+
+[Service]
+WorkingDirectory={{ redash_dir }}
+ExecStart=/usr/bin/docker-compose up
+ExecStop=/usr/bin/docker-compose down
+User=root
+
+[Install]
+WantedBy=multi-user.target

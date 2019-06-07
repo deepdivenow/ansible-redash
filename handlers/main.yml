@@ -1,0 +1,4 @@
+---
+# handlers file for redash
+- name: restart redash
+  systemd: name=redash state=restarted daemon-reload=True
