@@ -1,5 +1,6 @@
 ---
 # defaults file for cachet
+redash_init: False
 redash_dir: '/opt/redash'
 redash_port: 80
 redash_image: "redash/redash:7.0.0.b18042"

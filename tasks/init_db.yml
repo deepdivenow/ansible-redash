@@ -1,0 +1,4 @@
+---
+
+- name: InitDB redash
+  command: "docker run --env-file {{ redash_dir }}/redash.env --rm {{ redash_image }} /app/manage.py database create_tables"
